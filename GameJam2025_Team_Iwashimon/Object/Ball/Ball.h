@@ -4,6 +4,8 @@
 class Ball:public ObjectBase
 {
 private:
+	int ballflag;
+	int speed;
 
 public:
 	Ball();

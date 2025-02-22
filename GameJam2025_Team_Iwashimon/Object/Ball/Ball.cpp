@@ -3,6 +3,8 @@
 
 Ball::Ball()
 {
+	ballflag = 0;
+	speed = 5;
 }
 
 Ball::~Ball()
@@ -17,11 +19,20 @@ void Ball::Initialize()
 
 void Ball::Update(float delta_second)
 {
+	if (CheckHitKey(KEY_INPUT_SPACE))
+	{
+		ballflag = 1;
+	}
 }
 
 void Ball::Draw(Vector2D target) const
 {
 	__super::Draw(target);
+	if (ballflag == 1)
+	{
+		DrawCircle(200, 200, 15, 0xffffff);
+	}
+	//DrawCircle(200, 200, 15, 0xffffff);
 }
 
 void Ball::Finalize()
