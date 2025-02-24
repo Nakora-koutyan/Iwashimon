@@ -1,14 +1,14 @@
 #pragma once
 #include "../ObjectBase.h"
 
-class Player:public ObjectBase
+class BaseballBat :public ObjectBase
 {
 private:
-
+	Vector2D velocity;		//ˆÚ“®‹——£
 
 public:
-	Player();
-	~Player();
+	BaseballBat();
+	~BaseballBat();
 
 public:
 	//‰Šú‰»ˆ—

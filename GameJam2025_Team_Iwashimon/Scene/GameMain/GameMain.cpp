@@ -2,6 +2,7 @@
 
 #include "../../Object/Player/Player.h"
 #include "../../Object/Ball/Ball.h"
+#include "../../Object/BaseballBat/BaseballBat.h"
 #include "../../Performance/Blast.h"
 #include "../../Performance/SpeedBoost.h"
 
@@ -25,6 +26,7 @@ void GameMain::Initialize()
 	//オブジェクトを登録・生成
 	CreateObject<Ball>();
 	CreateObject<Player>();
+	CreateObject<BaseballBat>();
 	CreateObject<Blast>();
 	CreateObject<SpeedBoost>();
 
