@@ -4,7 +4,14 @@
 class BaseballBat :public ObjectBase
 {
 private:
+	class InputControl* input;	//入力インスタンスを取得
+
 	Vector2D velocity;		//移動距離
+
+	float amplitude;		//角度
+	float frequency;		//ラジアン値
+
+	bool is_swinging;		//バットを振った？
 
 public:
 	BaseballBat();
@@ -19,5 +26,12 @@ public:
 	void Draw(Vector2D target)const override;
 	//終了時処理
 	void Finalize()override;
+
+private:
+	//回転処理
+	void Rolling();
+
+	//振子処理
+	void Pendulum();
 };
 
