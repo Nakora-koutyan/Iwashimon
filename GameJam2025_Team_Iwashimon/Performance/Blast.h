@@ -4,7 +4,8 @@
 class Blast:public ObjectBase
 {
 private:
-	
+	bool bom_flg;
+	float alpha_time;
 public:
 	Blast();
 	~Blast();

@@ -8,7 +8,7 @@ private:
 public:
 	Gauge();
 	~Gauge();
-
+	
 public:
 	//‰Šú‰»ˆ—
 	void Initialize();
@@ -18,5 +18,8 @@ public:
 	void Draw(Vector2D target)const;
 	//I—¹ˆ—
 	void Finalize();
+
+
+	
 };
 
