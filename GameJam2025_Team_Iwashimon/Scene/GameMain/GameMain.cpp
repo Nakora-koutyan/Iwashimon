@@ -27,7 +27,7 @@ void GameMain::Initialize()
 	CreateObject<Ball>();
 	CreateObject<Player>();
 	CreateObject<BaseballBat>();
-	CreateObject<Blast>();
+	//CreateObject<Blast>();
 	CreateObject<SpeedBoost>();
 
 	//ÉQÅ[ÉWÇï\é¶
@@ -51,7 +51,7 @@ void GameMain::Draw() const
 {
 	for (auto i = 0; i < objects.size(); i++)
 	{
-		objects[i]->Draw(objects[1]->GetLocation());
+		objects[i]->Draw(objects[0]->GetLocation());
 	}
 
 	gauge->Draw();

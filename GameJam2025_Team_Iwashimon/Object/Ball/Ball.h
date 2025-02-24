@@ -15,8 +15,10 @@ private:
 	double dt;
 	double speed1;
 
+	const float max_a = 500.0f;
+	const float min_a = 0.0f;
+
 	bool is_air;
-	float locationx, locationy;
 
 public:
 	Ball();

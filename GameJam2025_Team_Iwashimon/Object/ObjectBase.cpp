@@ -23,21 +23,9 @@ void ObjectBase::Update(float delta_second)
 
 void ObjectBase::Draw(Vector2D target_pos) const
 {
-	//カメラ座標を決定
-	Vector2D camera_pos = Vector2D(STAGE_WIDTH * 0.5f, STAGE_HEIGHT * 0.5);
 	//追尾対象を決定
-	camera_pos = target_pos;
+	Vector2D camera_pos = target_pos;
 
-	//カメラが画面左端からはみ出ないようにする
-	if ((camera_pos.x - (SCREEN_WIDTH * 0.5f)) <= 0)
-	{
-		camera_pos.x = (SCREEN_WIDTH * 0.5f);
-	}
-	//カメラがステージの最大座標からはみ出さないようにする
-	if (STAGE_WIDTH <= (camera_pos.x + (SCREEN_WIDTH * 0.5f)))
-	{
-		camera_pos.x = STAGE_WIDTH - (SCREEN_WIDTH * 0.5f);
-	}
 	//カメラがステージの一番上からはみ出さなようにする
 	if ((camera_pos.y - (SCREEN_HEIGHT * 0.5f)) <= 0)
 	{
