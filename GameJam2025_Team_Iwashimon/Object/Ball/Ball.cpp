@@ -5,14 +5,10 @@
 Ball::Ball()
 {
 	ballflag = 0;
-	for (int i = 0; i < 5; i++)
-	{
-		ballx[i] = 0;
-		bally[i] = 0;
-	}
 	WaitTime = 0;
 	input = nullptr;
 	speed = 0.0f;
+	g_velocity = 0.0f;
 }
 
 Ball::~Ball()
@@ -28,31 +24,26 @@ void Ball::Initialize()
 
 void Ball::Update(float delta_second)
 {
+	if (world_pos.y >= 600.0f)
+	{
+		g_velocity = 0.0f;
+		speed = 0.0f;
+		world_pos.y = 600.0f;
+	}
 	if (input->GetKeyPress(KEY_INPUT_SPACE))
 	{
 		ballflag = 1;
-		
-		for (int j = 0; j < 5; j++)
-		{
-			ballx[j] += 10.0f;
-			bally[j] += 10.0f;
-		}
+		speed.y = -5.0f;
+		speed.x = 5.0f;
 	}
+	g_velocity += D_GRAVITY / 440.0f;
+	speed.y += g_velocity;
+	world_pos.x += speed.y;
 }
 
 void Ball::Draw(Vector2D target) const
 {
 	__super::Draw(target);
-	for (int i = 0; i < 5; i++)
-	{
-		if (ballflag == 1)
-		{
-			DrawCircle(200 + ballx[i], 200, 15, 0xffffff);
-		}
-		else {
-			DrawCircle(200, 200, 15, 0xffffff);
-		}
-	}	
 }
 
 void Ball::Finalize()

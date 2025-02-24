@@ -1,16 +1,15 @@
 #pragma once
 #include "../ObjectBase.h"
+#define D_GRAVITY  (9.897f)					//define gravity
 
 class Ball:public ObjectBase
 {
 private:
-	int ballflag;						//spacebarActivationFlag
-	int speed;							//uniform speed
-	int ballx[5], bally[5];				//ball trajectory variables
-	int WaitTime;						//manipulate time
-	int ballX;							//dwell variable
+	int ballflag;							//spacebarActivationFlag
+	Vector2D speed;							//uniform speed
+	int WaitTime;							//manipulate time
 	class InputControl* input;
-	int posx;							//control time
+	float g_velocity;						//simulate gravity
 
 public:
 	Ball();
