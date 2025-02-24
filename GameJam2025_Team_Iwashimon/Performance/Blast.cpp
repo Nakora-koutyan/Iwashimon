@@ -31,7 +31,8 @@ void Blast::Update(float delta_second)
 
 void Blast::Draw(Vector2D target) const
 {
-    if (bom_flg) {
+    if (bom_flg) 
+    {
         DrawBox(50, 50, 250, 150, GetColor(255, 0, 0),true);
         DrawString(100, 100, "”š”­‚µ‚Ü‚µ‚½", GetColor(255, 255, 0));
 
