@@ -1,5 +1,6 @@
 #include "Ball.h"
 #include "DxLib.h"
+#include "../../Utility/InputManager.h"
 
 Ball::Ball()
 {
@@ -10,6 +11,8 @@ Ball::Ball()
 		bally[i] = 0;
 	}
 	WaitTime = 0;
+	input = nullptr;
+	speed = 0.0f;
 }
 
 Ball::~Ball()
@@ -20,22 +23,19 @@ void Ball::Initialize()
 {
 	world_pos = Vector2D(300.0f, 400.0f);
 	obj_size = Vector2D(50.0f, 50.0f);
+	input = InputControl::GetInstance();
 }
 
 void Ball::Update(float delta_second)
 {
-	if (CheckHitKey(KEY_INPUT_SPACE))
+	if (input->GetKeyPress(KEY_INPUT_SPACE))
 	{
-		ballflag = 1;/*
-		speed = 5;*/
+		ballflag = 1;
+		
 		for (int j = 0; j < 5; j++)
 		{
-			ballx[j] += 10;
-			bally[j] += 10;
-		}
-		if (++WaitTime < 1200)
-		{
-
+			ballx[j] += 10.0f;
+			bally[j] += 10.0f;
 		}
 	}
 }
@@ -49,9 +49,10 @@ void Ball::Draw(Vector2D target) const
 		{
 			DrawCircle(200 + ballx[i], 200, 15, 0xffffff);
 		}
-	}
-	
-	//DrawCircle(200, 200, 15, 0xffffff);
+		else {
+			DrawCircle(200, 200, 15, 0xffffff);
+		}
+	}	
 }
 
 void Ball::Finalize()
