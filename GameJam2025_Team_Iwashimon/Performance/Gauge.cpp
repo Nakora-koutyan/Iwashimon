@@ -16,7 +16,7 @@ void Gauge::Update(float delta_second)
 {
 }
 
-void Gauge::Draw(Vector2D target) const
+void Gauge::Draw() const
 {
 }
 

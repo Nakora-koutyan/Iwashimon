@@ -32,6 +32,7 @@ void GameMain::Initialize()
 
 	//ƒQ[ƒW‚ð•\Ž¦
 	gauge = new Gauge();
+	gauge->Initialize();
 }
 
 eSceneType GameMain::Update(float delta_second)
@@ -40,6 +41,8 @@ eSceneType GameMain::Update(float delta_second)
 	{
 		objects[i]->Update(delta_second);
 	}
+
+	gauge->Update(delta_second);
 
 	return GetNowSceneType();
 }
@@ -50,6 +53,8 @@ void GameMain::Draw() const
 	{
 		objects[i]->Draw(objects[0]->GetLocation());
 	}
+
+	gauge->Draw();
 }
 
 void GameMain::Finalize()

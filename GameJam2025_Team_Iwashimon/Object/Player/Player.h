@@ -4,8 +4,7 @@
 class Player:public ObjectBase
 {
 private:
-
-
+	
 public:
 	Player();
 	~Player();

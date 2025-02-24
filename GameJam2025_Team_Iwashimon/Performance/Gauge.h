@@ -15,7 +15,7 @@ public:
 	//XVˆ—
 	void Update(float delta_second);
 	//•`‰æ
-	void Draw(Vector2D target)const;
+	void Draw()const;
 	//I—¹ˆ—
 	void Finalize();
 };

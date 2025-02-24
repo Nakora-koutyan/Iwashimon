@@ -1,6 +1,8 @@
 #include "BaseballBat.h"
+#include <math.h>
 
 BaseballBat::BaseballBat()
+	:velocity(0.0f)
 {
 }
 
@@ -16,7 +18,7 @@ void BaseballBat::Initialize()
 
 void BaseballBat::Update(float delta_second)
 {
-
+	//velocity.x
 }
 
 void BaseballBat::Draw(Vector2D target) const
