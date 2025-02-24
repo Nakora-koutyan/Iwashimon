@@ -1,8 +1,6 @@
 #pragma once
 #include "../Utility/Vector2D.h"
-
-#pragma once
-#include "../Utility/Vector2D.h"
+#include "DxLib.h"
 
 #define SCREEN_HEIGHT (480)
 #define SCREEN_WIDTH (640)

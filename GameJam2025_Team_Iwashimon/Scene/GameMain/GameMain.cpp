@@ -2,6 +2,7 @@
 
 #include "../../Object/Player/Player.h"
 #include "../../Object/Ball/Ball.h"
+#include "../../Object/BaseballBat/BaseballBat.h"
 #include "../../Performance/Blast.h"
 #include "../../Performance/SpeedBoost.h"
 
@@ -25,11 +26,13 @@ void GameMain::Initialize()
 	//オブジェクトを登録・生成
 	CreateObject<Ball>();
 	CreateObject<Player>();
+	CreateObject<BaseballBat>();
 	CreateObject<Blast>();
 	CreateObject<SpeedBoost>();
 
 	//ゲージを表示
 	gauge = new Gauge();
+	gauge->Initialize();
 }
 
 eSceneType GameMain::Update(float delta_second)
@@ -38,6 +41,8 @@ eSceneType GameMain::Update(float delta_second)
 	{
 		objects[i]->Update(delta_second);
 	}
+
+	gauge->Update(delta_second);
 
 	return GetNowSceneType();
 }
@@ -48,6 +53,8 @@ void GameMain::Draw() const
 	{
 		objects[i]->Draw(objects[0]->GetLocation());
 	}
+
+	gauge->Draw();
 }
 
 void GameMain::Finalize()

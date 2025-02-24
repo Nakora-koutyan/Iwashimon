@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Object\BaseballBat\BaseballBat.cpp" />
     <ClCompile Include="Object\ObjectBase.cpp" />
     <ClCompile Include="Object\Ball\Ball.cpp" />
     <ClCompile Include="Performance\Blast.cpp" />
@@ -155,6 +156,7 @@
     <ClCompile Include="Utility\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Object\BaseballBat\BaseballBat.h" />
     <ClInclude Include="Object\ObjectBase.h" />
     <ClInclude Include="Object\Ball\Ball.h" />
     <ClInclude Include="Performance\Blast.h" />

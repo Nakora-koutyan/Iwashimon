@@ -4,6 +4,13 @@
 class Ball:public ObjectBase
 {
 private:
+	int ballflag;						//spacebarActivationFlag
+	int speed;							//uniform speed
+	int ballx[5], bally[5];				//ball trajectory variables
+	int WaitTime;						//manipulate time
+	int ballX;							//dwell variable
+	class InputControl* input;
+	int posx;							//control time
 
 public:
 	Ball();
