@@ -4,7 +4,12 @@
 Ball::Ball()
 {
 	ballflag = 0;
-	speed = 5;
+	for (int i = 0; i < 5; i++)
+	{
+		ballx[i] = 0;
+		bally[i] = 0;
+	}
+	WaitTime = 0;
 }
 
 Ball::~Ball()
@@ -21,17 +26,31 @@ void Ball::Update(float delta_second)
 {
 	if (CheckHitKey(KEY_INPUT_SPACE))
 	{
-		ballflag = 1;
+		ballflag = 1;/*
+		speed = 5;*/
+		for (int j = 0; j < 5; j++)
+		{
+			ballx[j] += 10;
+			bally[j] += 10;
+		}
+		if (++WaitTime < 1200)
+		{
+
+		}
 	}
 }
 
 void Ball::Draw(Vector2D target) const
 {
 	__super::Draw(target);
-	if (ballflag == 1)
+	for (int i = 0; i < 5; i++)
 	{
-		DrawCircle(200, 200, 15, 0xffffff);
+		if (ballflag == 1)
+		{
+			DrawCircle(200 + ballx[i], 200, 15, 0xffffff);
+		}
 	}
+	
 	//DrawCircle(200, 200, 15, 0xffffff);
 }
 

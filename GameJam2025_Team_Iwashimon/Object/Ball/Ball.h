@@ -4,8 +4,11 @@
 class Ball:public ObjectBase
 {
 private:
-	int ballflag;
-	int speed;
+	int ballflag;						//スペースキーが押されたらボールが飛ぶためのフラグ
+	int speed;							//固定速度
+	int ballx[5], bally[5];				//ボールが飛んでいるように見える変数
+	int WaitTime;						//時間を制御する
+	int ballX;							//一定時間その場でとどまるようにする変数
 
 public:
 	Ball();
