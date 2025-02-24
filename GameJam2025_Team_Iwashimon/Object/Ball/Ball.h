@@ -5,11 +5,18 @@
 class Ball:public ObjectBase
 {
 private:
-	int ballflag;							//spacebarActivationFlag
 	Vector2D speed;							//uniform speed
-	int WaitTime;							//manipulate time
 	class InputControl* input;
 	float g_velocity;						//simulate gravity
+	double angle;							//radian conversion
+	double startangle;						//launch angle(start)
+	double time;								
+	double x, y;
+	double dt;
+	double speed1;
+
+	bool is_air;
+	float locationx, locationy;
 
 public:
 	Ball();
