@@ -23,6 +23,7 @@ public:
 public:
 	virtual void Initialize();
 	virtual eSceneType Update(float delta_second);
+
 	virtual void Draw()const;
 	virtual void Finalize();
 
