@@ -6,7 +6,23 @@ class TitleScene :public SceneBase
 private:
 
 public:
-	
+	TitleScene();
+	virtual ~TitleScene();
+
+	//初期化処理
+	virtual void Initialize() override;
+
+	virtual eSceneType Update(float delta_second);
+
+	//描画処理
+	virtual void Draw() const override;
+
+	//終了処理
+	virtual void Finalize() override;
+
+
+	//現在のシーンタイプ (オーバーライド必須)
+	virtual eSceneType GetNowSceneType() const override;
 public:
 
 };
