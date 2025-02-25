@@ -23,14 +23,16 @@ void ResultScene::Initialize()
 
 eSceneType ResultScene::Update(float delta_second)
 {
-	if (input->GetKeyPress(KEY_INPUT_A))
+	if (input->GetKeyPress(XINPUT_BUTTON_A) || input->GetKeyPress(KEY_INPUT_A))
 	{
 		return eSceneType::eTitle;
 	}
-	if (input->GetKeyPress(KEY_INPUT_E))
+#if 1
+	if(input->GetKeyPress(KEY_INPUT_E))
 	{
 		return eSceneType::eEnd;
 	}
+#endif
 	else
 	{
 		return GetNowSceneType();
