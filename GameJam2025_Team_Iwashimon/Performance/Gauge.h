@@ -1,7 +1,7 @@
 #pragma once
 #include "../Utility/Vector2D.h"
 
-#define MAX_GAUGE  (60)// ゲージの最大値
+#define MAX_GAUGE  (400)// ゲージの最大値
 #define DECREASE_SPEED  (1)// 減少速度 (1秒あたり)
 
 class Gauge
@@ -13,7 +13,7 @@ public:
 	~Gauge();
 
 	int currentGauge; // 現在のゲージ量
-	int previousTime;// 前回の更新時刻
+	float down_count;
 	
 public:
 	//初期化処理
