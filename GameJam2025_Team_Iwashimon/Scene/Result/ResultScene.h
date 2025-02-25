@@ -3,6 +3,9 @@
 
 class ResultScene :public SceneBase
 {
+private:
+	class InputControl* input;
+	int resultimage;
 public:
 	ResultScene();
 	~ResultScene();
