@@ -6,6 +6,7 @@ ObjectBase::ObjectBase()
 	,obj_size(0.0f)
 	,image(NULL)
 	,reverse_image(NULL)
+	, obj_type(ObjectType::eOther)
 {
 }
 
@@ -63,7 +64,21 @@ void ObjectBase::OnCollisionEnter(ObjectBase* obj)
 
 bool ObjectBase::CollisionHit(ObjectBase* obj)
 {
-	return false;
+	bool result = false;
+
+	//©g‚ÌObj‚ÌÀ•W‚Æ”¼Œa‚ğæ“¾
+	Vector2D a = Vector2D(this->GetLocation());
+	float a_r = (this->obj_size.x);
+	//‘ÎÛ‚ÌObj‚ÌÀ•W‚Æ”¼Œa‚ğæ“¾
+	Vector2D b = Vector2D(obj->GetLocation());
+	float b_r = (obj->obj_size.x);
+
+	//”¼Œa‚Ì‹——£‚ğ‹‚ß‚é
+	float r_direct = a_r + b_r;
+
+
+
+	return result;
 }
 
 void ObjectBase::SetLocation(Vector2D location)

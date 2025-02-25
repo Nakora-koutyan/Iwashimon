@@ -1,11 +1,5 @@
 #include "GameMain.h"
 
-#include "../../Object/Player/Player.h"
-#include "../../Object/Ball/Ball.h"
-#include "../../Object/BaseballBat/BaseballBat.h"
-#include "../../Performance/Blast.h"
-#include "../../Performance/SpeedBoost.h"
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -14,6 +8,11 @@
 GameMain::GameMain()
 	:gauge(nullptr)
 	,input(nullptr)
+	,player(nullptr)
+	,ball(nullptr)
+	,bat(nullptr)
+	,blast(nullptr)
+	,speed_boost(nullptr)
 {
 }
 
@@ -23,12 +22,31 @@ GameMain::~GameMain()
 
 void GameMain::Initialize()
 {
-	//オブジェクトを登録・生成
-	CreateObject<Ball>();
-	CreateObject<Player>();
-	CreateObject<BaseballBat>();
-	//CreateObject<Blast>();
-	CreateObject<SpeedBoost>();
+	//ボール生成
+	ball = new Ball();
+	ball->Initialize();
+	objects.push_back(ball);
+	//プレイヤー生成
+	player = new Player();
+	player->Initialize();
+	objects.push_back(player);
+	//バット生成
+	bat = new BaseballBat();
+	bat->Initialize();
+	objects.push_back(bat);
+	//blast生成
+	blast = new Blast();
+	blast->Initialize();
+	objects.push_back(blast);
+	//加速エフェクト生成
+	speed_boost = new SpeedBoost();
+	speed_boost->Initialize();
+	objects.push_back(speed_boost);
+
+	for (auto i = 0; i < objects.size(); i++)
+	{
+		objects[i]->Initialize();
+	}
 
 	//ゲージを表示
 	gauge = new Gauge();
@@ -40,6 +58,12 @@ eSceneType GameMain::Update(float delta_second)
 	for (auto i = 0; i < objects.size(); i++)
 	{
 		objects[i]->Update(delta_second);
+	}
+
+	//バットとボールの当たり判定
+	if (bat->CollisionHit(ball))
+	{
+
 	}
 
 	gauge->Update(delta_second);

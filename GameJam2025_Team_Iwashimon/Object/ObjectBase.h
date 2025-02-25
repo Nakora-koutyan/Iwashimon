@@ -8,6 +8,13 @@
 #define STAGE_WIDTH (2400.0f)
 #define STAGE_HEIGHT (900.0f)
 
+enum class ObjectType
+{
+	eBall,
+	eBat,
+	eOther
+};
+
 class ObjectBase
 {
 protected:
@@ -16,6 +23,8 @@ protected:
 
 	int image;
 	int reverse_image;
+
+	ObjectType obj_type;
 
 public:
 	ObjectBase();
@@ -37,4 +46,6 @@ public:
 	void SetLocation(Vector2D location);
 
 	Vector2D GetBoxSize()const { return obj_size; }
+
+	ObjectType GetObjectType()const { return obj_type; }
 };

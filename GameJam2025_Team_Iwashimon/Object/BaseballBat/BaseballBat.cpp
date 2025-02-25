@@ -23,7 +23,9 @@ void BaseballBat::Initialize()
 	input = InputControl::GetInstance();	//インスタンス取得
 
 	world_pos = Vector2D(200.0f, 380.0f);	//座標設定
-	obj_size = Vector2D(40.0f, 40.0f);		//オブジェクトのサイズ設定
+	obj_size = Vector2D(40.0f);				//オブジェクトのサイズ設定
+
+	obj_type = ObjectType::eBat;
 }
 
 void BaseballBat::Update(float delta_second)

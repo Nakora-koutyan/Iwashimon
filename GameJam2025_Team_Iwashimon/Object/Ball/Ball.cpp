@@ -26,6 +26,7 @@ void Ball::Initialize()
 	obj_size = Vector2D(50.0f, 50.0f);
 	input = InputControl::GetInstance();
 
+	obj_type = ObjectType::eBall;
 	//time = Max<double>(-1.0, 0.0);
 }
 
