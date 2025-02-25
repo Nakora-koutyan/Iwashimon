@@ -20,6 +20,9 @@ private:
 
 	bool is_air;
 
+	float target_length;
+	float target_height;
+
 public:
 	Ball();
 	~Ball();
@@ -33,4 +36,10 @@ public:
 	void Draw(Vector2D target)const;
 	//終了時処理
 	void Finalize();
+
+	//ヒットした際の処理
+	void OnCollisionEnter(ObjectBase* obj)override;
+
+	//高さ目標の長さを設定する
+	void SetTargetHeight(float length);
 };

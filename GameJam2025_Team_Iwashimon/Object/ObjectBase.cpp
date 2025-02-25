@@ -1,5 +1,6 @@
-#include "ObjectBase.h"
+ï»¿#include "ObjectBase.h"
 #include "DxLib.h"
+#include <math.h>
 
 ObjectBase::ObjectBase()
 	:world_pos(0.0f)
@@ -24,26 +25,26 @@ void ObjectBase::Update(float delta_second)
 
 void ObjectBase::Draw(Vector2D target_pos) const
 {
-	//’Ç”ö‘ÎÛ‚ğŒˆ’è
+	//è¿½å°¾å¯¾è±¡ã‚’æ±ºå®š
 	Vector2D camera_pos = target_pos;
 
-	//ƒJƒƒ‰‚ªƒXƒe[ƒW‚Ìˆê”Ôã‚©‚ç‚Í‚İo‚³‚È‚æ‚¤‚É‚·‚é
+	//ã‚«ãƒ¡ãƒ©ãŒã‚¹ãƒ†ãƒ¼ã‚¸ã®ä¸€ç•ªä¸Šã‹ã‚‰ã¯ã¿å‡ºã•ãªã‚ˆã†ã«ã™ã‚‹
 	if ((camera_pos.y - (SCREEN_HEIGHT * 0.5f)) <= 0)
 	{
 		camera_pos.y = (SCREEN_HEIGHT * 0.5f);
 	}
-	//ƒJƒƒ‰‚ªƒXƒe[ƒW‚Ì’ê‚æ‚è‰º‚É‚È‚ç‚È‚¢‚æ‚¤‚É‚·‚é
+	//ã‚«ãƒ¡ãƒ©ãŒã‚¹ãƒ†ãƒ¼ã‚¸ã®åº•ã‚ˆã‚Šä¸‹ã«ãªã‚‰ãªã„ã‚ˆã†ã«ã™ã‚‹
 	if (STAGE_HEIGHT <= (camera_pos.y + (SCREEN_HEIGHT * 0.5f)))
 	{
 		camera_pos.y = STAGE_HEIGHT - (SCREEN_HEIGHT * 0.5f);
 	}
 
-	//ƒJƒƒ‰À•W‚©‚çƒXƒNƒŠ[ƒ“À•W‚ÌŒ´“_‚É•ÏŠ·‚·‚é
+	//ã‚«ãƒ¡ãƒ©åº§æ¨™ã‹ã‚‰ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã®åŸç‚¹ã«å¤‰æ›ã™ã‚‹
 	Vector2D screen_origin_pos;
 	screen_origin_pos.x = camera_pos.x - (SCREEN_WIDTH * 0.5f);
 	screen_origin_pos.y = camera_pos.y - (SCREEN_HEIGHT * 0.5f);
 
-	//ƒIƒuƒWƒFƒNƒg©g‚Ìƒ[ƒ‹ƒh‚Å‚ÌÀ•W‚ğƒXƒNƒŠ[ƒ“‚ÌÀ•W‚É•ÏŠ·
+	//ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè‡ªèº«ã®ãƒ¯ãƒ¼ãƒ«ãƒ‰ã§ã®åº§æ¨™ã‚’ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã®åº§æ¨™ã«å¤‰æ›
 	Vector2D screen_pos;
 	screen_pos.x = world_pos.x - screen_origin_pos.x;
 	screen_pos.y = world_pos.y - screen_origin_pos.y;
@@ -66,17 +67,23 @@ bool ObjectBase::CollisionHit(ObjectBase* obj)
 {
 	bool result = false;
 
-	//©g‚ÌObj‚ÌÀ•W‚Æ”¼Œa‚ğæ“¾
+	//è‡ªèº«ã®Objã®åº§æ¨™ã¨åŠå¾„ã‚’å–å¾—
 	Vector2D a = Vector2D(this->GetLocation());
 	float a_r = (this->obj_size.x);
-	//‘ÎÛ‚ÌObj‚ÌÀ•W‚Æ”¼Œa‚ğæ“¾
+	//å¯¾è±¡ã®Objã®åº§æ¨™ã¨åŠå¾„ã‚’å–å¾—
 	Vector2D b = Vector2D(obj->GetLocation());
 	float b_r = (obj->obj_size.x);
 
-	//”¼Œa‚Ì‹——£‚ğ‹‚ß‚é
+	//åŠå¾„ã®è·é›¢ã‚’æ±‚ã‚ã‚‹
 	float r_direct = a_r + b_r;
 
+	//aÂ²+bÂ²ï¼cÂ²(ãƒ«ãƒ¼ãƒˆã§cã®å®Ÿéš›ã®é•·ã•ã‚’å–å¾—ã™ã‚‹æ‰€ã¾ã§)
+	float loc_direct = sqrt(powf((a.x - b.x), 2.0f) + powf((a.x - b.x), 2.0f));
 
+	if (loc_direct <= r_direct)
+	{
+		result = true;
+	}
 
 	return result;
 }

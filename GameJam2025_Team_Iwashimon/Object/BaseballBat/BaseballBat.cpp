@@ -65,7 +65,6 @@ void BaseballBat::Rolling()
 
 	velocity.x = world_pos.x + (cos(frequency) * m.x);											//振り子の動きのx座標
 	velocity.y = world_pos.y + (cos(frequency) * m.y) + (float)(sin(frequency) * length.y);		//振り子の動きのy座標 
-
 }
 
 void BaseballBat::Pendulum()

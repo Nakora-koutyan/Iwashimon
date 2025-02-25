@@ -1,4 +1,4 @@
-#include "Ball.h"
+ï»¿#include "Ball.h"
 #include "DxLib.h"
 #include "../../Utility/InputManager.h"
 #include "../../Utility/UserTemplate.h"
@@ -14,6 +14,7 @@ Ball::Ball()
 	dt = 0.1;
 	speed1 = 20.0;
 	is_air = false;
+	target_height = 0.0f;
 }
 
 Ball::~Ball()
@@ -32,21 +33,16 @@ void Ball::Initialize()
 
 void Ball::Update(float delta_second)
 {
-	if (world_pos.y >= 600.0f)
+	if (world_pos.y >= 600.0f && 0 <= speed.y)
 	{
 		is_air = false;
 	}
-	if (input->GetKeyPress(KEY_INPUT_SPACE))
-	{
-		is_air = true;
-		speed.y = -2500.0f;
-	}
 	if (is_air == true)
 	{
-		g_velocity += D_GRAVITY / 440.0f;			//d—Í‰ÁZ
-		speed.y += g_velocity * delta_second;		//d—Í‚ğY•ûŒü‚Ì‰Á‘¬“x‚É‰ÁZ‚·‚é
-		speed.x = 60.0f;							//X•ûŒü‚Ì‘¬“x‚ğİ’è
-		world_pos += speed * delta_second;			//À•W‚É‰Á‘¬‚ğ‰ÁZ‚µˆÚ“®‚³‚¹‚é
+		g_velocity += D_GRAVITY / 440.0f;			//é‡åŠ›åŠ ç®—
+		speed.y += g_velocity * delta_second;		//é‡åŠ›ã‚’Yæ–¹å‘ã®åŠ é€Ÿåº¦ã«åŠ ç®—ã™ã‚‹
+		speed.x = 60.0f;							//Xæ–¹å‘ã®é€Ÿåº¦ã‚’è¨­å®š
+		world_pos += speed * delta_second;			//åº§æ¨™ã«åŠ é€Ÿã‚’åŠ ç®—ã—ç§»å‹•ã•ã›ã‚‹
 	}
 	
 	if (is_air == false)
@@ -66,4 +62,23 @@ void Ball::Draw(Vector2D target) const
 
 void Ball::Finalize()
 {
+}
+
+void Ball::OnCollisionEnter(ObjectBase* obj)
+{
+	is_air = true;
+	
+	//è‡ªèº«ã®Objã®åº§æ¨™ã¨åŠå¾„ã‚’å–å¾—
+	Vector2D a = Vector2D(this->GetLocation());
+	//å¯¾è±¡ã®Objã®åº§æ¨™ã¨åŠå¾„ã‚’å–å¾—
+	Vector2D b = Vector2D(obj->GetLocation());
+
+	//aÂ²+bÂ²ï¼cÂ²(ãƒ«ãƒ¼ãƒˆã§cã®å®Ÿéš›ã®é•·ã•ã‚’å–å¾—ã™ã‚‹æ‰€ã¾ã§)
+	target_height = sqrt(powf((a.x - b.x), 2.0f) + powf((a.x - b.x), 2.0f));
+}
+
+void Ball::SetTargetHeight(float length)
+{
+	target_length = target_height * length;
+	speed.y = -target_length;
 }
