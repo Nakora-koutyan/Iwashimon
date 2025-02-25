@@ -8,7 +8,8 @@ enum class eSceneType
 	eInGame,
 	eResult,
 	eHelp,
-	eEnd
+	eEnd,
+	eGameEnd
 };
 
 class SceneBase

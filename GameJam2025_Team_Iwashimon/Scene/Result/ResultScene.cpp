@@ -23,7 +23,18 @@ void ResultScene::Initialize()
 
 eSceneType ResultScene::Update(float delta_second)
 {
-	return GetNowSceneType();
+	if (input->GetKeyPress(KEY_INPUT_A))
+	{
+		return eSceneType::eTitle;
+	}
+	if (input->GetKeyPress(KEY_INPUT_E))
+	{
+		return eSceneType::eEnd;
+	}
+	else
+	{
+		return GetNowSceneType();
+	}
 }
 
 void ResultScene::Draw() const
@@ -37,9 +48,5 @@ void ResultScene::Finalize()
 
 eSceneType ResultScene::GetNowSceneType() const
 {
-	if (input->GetKeyPress(KEY_INPUT_A))
-	{
-		return eSceneType::eTitle;
-	}
 	return eSceneType::eResult;
 }
