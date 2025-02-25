@@ -1,4 +1,5 @@
 #include "GameMain.h"
+#include "../../Utility/InputManager.h"
 
 #include <iostream>
 #include <fstream>
@@ -51,6 +52,8 @@ void GameMain::Initialize()
 	//ゲージを表示
 	gauge = new Gauge();
 	gauge->Initialize();
+
+	input = InputControl::GetInstance();
 }
 
 eSceneType GameMain::Update(float delta_second)
@@ -63,12 +66,28 @@ eSceneType GameMain::Update(float delta_second)
 	//バットとボールの当たり判定
 	if (bat->CollisionHit(ball))
 	{
-
+		ball->OnCollisionEnter(bat);
 	}
 
 	gauge->Update(delta_second);
 
-	return GetNowSceneType();
+	//ボタンで各シーンに遷移できるようにしました
+	if (input->GetKeyPress(KEY_INPUT_R))
+	{
+		return eSceneType::eResult;
+	}
+	else if (input->GetKeyPress(KEY_INPUT_T))
+	{
+		return eSceneType::eTitle;
+	}
+	else if (input->GetKeyPress(KEY_INPUT_H))
+	{
+		return eSceneType::eHelp;
+	}
+	else
+	{
+		return GetNowSceneType();
+	}
 }
 
 void GameMain::Draw() const

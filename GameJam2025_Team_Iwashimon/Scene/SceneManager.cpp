@@ -1,6 +1,9 @@
 #include "SceneManager.h"
 
 #include "GameMain/GameMain.h"
+#include "Help/HelpScene.h"
+#include "Result/ResultScene.h"
+#include "Title/TitleScene.h"
 
 SceneManager::SceneManager()
 	:current_scene(nullptr)
@@ -89,7 +92,7 @@ SceneBase* SceneManager::CreateScene(eSceneType new_scene_type)
 	switch (new_scene_type)
 	{
 	case eSceneType::eTitle:	//タイトル画面
-		return 0;
+		return  0;//dynamic_cast<SceneBase*> (new TitleScene());
 		break;
 
 	case eSceneType::eInGame:	//ゲームメイン画面
@@ -97,11 +100,11 @@ SceneBase* SceneManager::CreateScene(eSceneType new_scene_type)
 		break;
 
 	case eSceneType::eHelp:		//ヘルプ画面
-		return 0;
+		return  dynamic_cast<SceneBase*> (new HelpScene());
 		break;
 
 	case eSceneType::eResult:	//リザルト画面
-		return 0;
+		return  dynamic_cast<SceneBase*> (new ResultScene());
 
 	case eSceneType::eEnd:		//エンド画面
 		return 0;
