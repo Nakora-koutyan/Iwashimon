@@ -1,14 +1,16 @@
 #pragma once
 #include "../SceneBase.h"
-
-class ResultScene :public SceneBase
+class EndScene :public SceneBase
 {
 private:
 	class InputControl* input;
-	int resultimage;
+	int Endimage;
+	int Endrollimage[6];
+	int g_WaitTime;
+	int g_PosY;
 public:
-	ResultScene();
-	~ResultScene();
+	EndScene();
+	~EndScene();
 
 public:
 	void Initialize()override;

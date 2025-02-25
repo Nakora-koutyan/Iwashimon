@@ -4,6 +4,7 @@
 #include "Help/HelpScene.h"
 #include "Result/ResultScene.h"
 #include "Title/TitleScene.h"
+#include "End/EndScene.h"
 
 SceneManager::SceneManager()
 	:current_scene(nullptr)
@@ -58,7 +59,7 @@ bool SceneManager::LoopCheck() const
 void SceneManager::ChangeScene(eSceneType new_scene_type)
 {
 	//シーンがEnd画面ならloopを終了する
-	if (new_scene_type == eSceneType::eEnd)
+	if (new_scene_type == eSceneType::eGameEnd)
 	{
 		loop_flag = false;
 		return;
@@ -107,8 +108,11 @@ SceneBase* SceneManager::CreateScene(eSceneType new_scene_type)
 		return  dynamic_cast<SceneBase*> (new ResultScene());
 
 	case eSceneType::eEnd:		//エンド画面
+		return dynamic_cast<SceneBase*> (new EndScene());
+		break;
+	case eSceneType::eGameEnd:
 		return 0;
-
+		break;
 	default:
 		return nullptr;
 	}

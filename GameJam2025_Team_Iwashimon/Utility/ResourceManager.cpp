@@ -89,7 +89,7 @@ const void ResourceManager::PlaySoundNormal(int sound_handle,
 {
 	PlaySoundMem(sound_handle, DX_PLAYTYPE_NORMAL, TopPositionFlg);
 }
-
+ 
 void ResourceManager::UnloadResourceAll()
 {
 	//コンテナ内にデータがなければ終了
