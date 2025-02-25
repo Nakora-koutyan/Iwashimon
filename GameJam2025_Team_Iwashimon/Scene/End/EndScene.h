@@ -1,5 +1,6 @@
 #pragma once
 #include "../SceneBase.h"
+#define MOVE_SPEED 7
 class EndScene :public SceneBase
 {
 private:

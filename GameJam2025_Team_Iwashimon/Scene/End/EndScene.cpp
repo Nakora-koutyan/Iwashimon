@@ -5,6 +5,7 @@
 
 EndScene::EndScene()
 {
+	g_WaitTime = 0;
 }
 
 EndScene::~EndScene()
@@ -34,13 +35,27 @@ void EndScene::Initialize()
 
 eSceneType EndScene::Update(float delta_second)
 {
+	if (++g_WaitTime < 7400)g_PosY = 600 - g_WaitTime / 4;
+	
+	if (++g_WaitTime > 7500)
+	{
+		if (g_PosY >= 600 || g_WaitTime >= 8000)
+		{
+			return eSceneType::eGameEnd;
+		}
+	}
 	return eSceneType();
 }
 
 void EndScene::Draw() const
 {
 	DrawGraph(0, 0, Endimage, TRUE);
-	DrawGraph(0, 10, Endrollimage[0], TRUE);
+	DrawGraph(0, 1300 + g_PosY, Endrollimage[0], TRUE);
+	DrawGraph(50, 300 + g_PosY, Endrollimage[1], TRUE);
+	DrawGraph(50, 500 + g_PosY, Endrollimage[2], TRUE);
+	DrawGraph(50, 700 + g_PosY, Endrollimage[3], TRUE);
+	DrawGraph(50, 900 + g_PosY, Endrollimage[4], TRUE);
+	DrawGraph(50, 1100 + g_PosY, Endrollimage[5], TRUE);
 }
 
 void EndScene::Finalize()
