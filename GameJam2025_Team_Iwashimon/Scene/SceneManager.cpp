@@ -92,7 +92,7 @@ SceneBase* SceneManager::CreateScene(eSceneType new_scene_type)
 	switch (new_scene_type)
 	{
 	case eSceneType::eTitle:	//タイトル画面
-		return  0;//dynamic_cast<SceneBase*> (new TitleScene());
+		return  dynamic_cast<SceneBase*> (new TitleScene());
 		break;
 
 	case eSceneType::eInGame:	//ゲームメイン画面
