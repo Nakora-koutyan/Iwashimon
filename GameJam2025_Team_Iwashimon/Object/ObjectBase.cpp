@@ -90,4 +90,5 @@ bool ObjectBase::CollisionHit(ObjectBase* obj)
 
 void ObjectBase::SetLocation(Vector2D location)
 {
+	world_pos = location;
 }

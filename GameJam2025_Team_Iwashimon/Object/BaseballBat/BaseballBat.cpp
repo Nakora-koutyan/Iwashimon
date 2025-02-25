@@ -2,7 +2,7 @@
 #include "../../Utility/InputManager.h"
 #include <math.h>
 
-#define ANGLE_VELOCITY (5.0f)
+#define ANGLE_VELOCITY (10.0f)
 #define VEC_ANGLE (180.0f)
 
 BaseballBat::BaseballBat()
@@ -22,7 +22,6 @@ void BaseballBat::Initialize()
 {
 	input = InputControl::GetInstance();	//インスタンス取得
 
-	world_pos = Vector2D(200.0f, 380.0f);	//座標設定
 	obj_size = Vector2D(40.0f);				//オブジェクトのサイズ設定
 
 	obj_type = ObjectType::eBat;
@@ -58,7 +57,7 @@ void BaseballBat::Rolling()
 	amplitude += ANGLE_VELOCITY;							//角度に値を加算し続ける
 	frequency = (amplitude * (DX_PI_F / 180.0f));			//角度をラジアン値に変換
 
-	Vector2D length = Vector2D(3.5f, 1.5f);
+	Vector2D length = Vector2D(10.0f, 2.0f);
 
 	float af = (VEC_ANGLE * (DX_PI_F / 180.0f));	//回転の軸の角度
 	Vector2D m = { (float)(cos(af) * length.x),(float)(sin(af) * length.y) };

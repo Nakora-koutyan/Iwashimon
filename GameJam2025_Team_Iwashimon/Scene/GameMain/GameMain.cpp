@@ -46,8 +46,11 @@ void GameMain::Initialize()
 
 	for (auto i = 0; i < objects.size(); i++)
 	{
+		//オブジェクトの初期化
 		objects[i]->Initialize();
 	}
+
+	bat->SetLocation(Vector2D(player->GetLocation().x,player->GetLocation().y + 25.0f));
 
 	//ゲージを表示
 	gauge = new Gauge();
@@ -67,6 +70,7 @@ eSceneType GameMain::Update(float delta_second)
 	if (bat->CollisionHit(ball))
 	{
 		ball->OnCollisionEnter(bat);
+		ball->SetTargetHeight(gauge->GetConsumedLength());
 	}
 
 	gauge->Update(delta_second);

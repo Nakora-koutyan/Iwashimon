@@ -4,7 +4,7 @@
 
 Gauge::Gauge():
 	down_count(0.0f),
-	currentGauge(0)
+	current_gauge(0)
 {
 }
 
@@ -14,7 +14,7 @@ Gauge::~Gauge()
 
 void Gauge::Initialize()
 {
-	currentGauge = MAX_GAUGE;				// åªç›ÇÃÉQÅ[ÉWó 
+	current_gauge = MAX_GAUGE;				// åªç›ÇÃÉQÅ[ÉWó 
 	down_count = (MAX_GAUGE / 15);			//å∏è≠ë¨ìx
 }
 
@@ -27,12 +27,11 @@ void Gauge::Update(float delta_second)
 void Gauge::Draw() const
 {
 	// ÉQÅ[ÉWÇÃï`âÊ
-	DrawBox(10, 10, 10 + currentGauge, 40, GetColor(255, 0, 0), TRUE);
-
+	DrawBoxAA(10.0f, 10.0f, 10.0f + current_gauge, 40.0f, GetColor(255, 0, 0), TRUE);
 	// ÉQÅ[ÉWÇÃògê¸Çï`âÊ
-	DrawBox(10, 10, 10 + MAX_GAUGE, 40, GetColor(255, 255, 255), FALSE);
-
+	DrawBoxAA(10.0f, 10.0f, 10.0f + MAX_GAUGE, 40, GetColor(255, 255, 255), FALSE);
 }
+
 void Gauge::Finalize()
 {
 }
@@ -40,8 +39,10 @@ void Gauge::Finalize()
 //å∏è≠èàóù
 void Gauge::TimePassage(float delta_second)
 {
-	currentGauge -= (down_count) * delta_second;
-	if (currentGauge < 0) {
-		currentGauge = 0;
+	current_gauge -= (down_count) * delta_second;
+
+	if (current_gauge < 0) 
+	{
+		current_gauge = 0;
 	}
 }

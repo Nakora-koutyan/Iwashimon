@@ -2,6 +2,7 @@
 #include "DxLib.h"
 #include "../../Utility/InputManager.h"
 #include "../../Utility/UserTemplate.h"
+#include "../../Utility/ResourceManager.h"
 #include <math.h>
 
 Ball::Ball()
@@ -28,7 +29,12 @@ void Ball::Initialize()
 	input = InputControl::GetInstance();
 
 	obj_type = ObjectType::eBall;
-	//time = Max<double>(-1.0, 0.0);
+
+	//インスタンスを確保
+	ResourceManager* rm = ResourceManager::GetInstance();
+	std::vector<int> tmp;
+	tmp = rm->GetImages("Resource/Image/ball.png");
+	image = tmp[0];
 }
 
 void Ball::Update(float delta_second)
@@ -55,7 +61,8 @@ void Ball::Update(float delta_second)
 
 void Ball::Draw(Vector2D target) const
 {
-	DrawFormatStringF(300, 450, GetColor(255, 255, 255), "X : %lf Y : %lf", this->GetLocation().x, this->GetLocation().y);
+	DrawFormatStringF(300, 400, GetColor(255, 255, 255), "X : %lf Y : %lf", this->GetLocation().x, this->GetLocation().y);
+	DrawFormatStringF(300, 450, GetColor(255, 255, 255), "speed.y : %lf", this->speed.y);
 
 	__super::Draw(target);
 }
@@ -79,6 +86,6 @@ void Ball::OnCollisionEnter(ObjectBase* obj)
 
 void Ball::SetTargetHeight(float length)
 {
-	target_length = target_height * length;
+	target_length = target_height * length * 0.5f;
 	speed.y = -target_length;
 }

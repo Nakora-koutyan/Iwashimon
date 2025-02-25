@@ -17,7 +17,7 @@ void Blast::Initialize()
 
 void Blast::Update(float delta_second)
 {
-  //スペースキーが押されたらtrueにする
+    //スペースキーが押されたらtrueにする
     if (CheckHitKey(KEY_INPUT_SPACE))
     {
         bom_flg = true;
@@ -36,11 +36,9 @@ void Blast::Draw(Vector2D target) const
         DrawBox(50, 50, 250, 150, GetColor(255, 0, 0),true);
         DrawString(100, 100, "爆発しました", GetColor(255, 255, 0));
 
-        SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
-
+        //SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha_time);
         DrawBox(50, 50, 250, 150, GetColor(255, 0, 0), false);
-       
-        SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha_time);
+        //SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
     }
    
 }
