@@ -10,7 +10,7 @@ private:
 	int cursor_position;
 	int cursor_speed;
 	int move_interval;
-	int Sound_data;
+	int ClickSound;
 public:
 	TitleScene();
 	virtual ~TitleScene();

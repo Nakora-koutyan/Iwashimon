@@ -9,7 +9,7 @@ TitleScene::TitleScene():
 
 	title_image(NULL),
 	cursor_image(NULL),
-    Sound_data(),
+    ClickSound(0),
 	cursor_position(0),
     cursor_speed(0.1),
     move_interval()
@@ -19,7 +19,7 @@ TitleScene::TitleScene():
 
 TitleScene::~TitleScene()
 {
-  
+
 }
 void TitleScene::Initialize()
 {
@@ -31,14 +31,23 @@ void TitleScene::Initialize()
     tmp = rm->GetImages("Resource/Image/Title.png");
     title_image = tmp[0];
 	
-  
+
+    
+   
 
 }
 
 
 eSceneType TitleScene::Update(float delta_second)
 {
+
     InputControl* input = InputControl::GetInstance();
+
+
+    
+
+
+
 
     // ƒJ[ƒ\ƒ‹ˆÚ“®‚Ì’x‰„ŠÔ
     const float move_delay = 0.2f;  
