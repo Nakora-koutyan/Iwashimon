@@ -9,10 +9,11 @@ TitleScene::TitleScene():
 
 	title_image(NULL),
 	cursor_image(NULL),
-    ClickSound(0),
+    ClickSound(NULL),
 	cursor_position(0),
     cursor_speed(0.1),
-    move_interval()
+    move_interval(),
+    ClickSoundInitialized(false)
 {
 	
 }
@@ -31,10 +32,16 @@ void TitleScene::Initialize()
     tmp = rm->GetImages("Resource/Image/Title.png");
     title_image = tmp[0];
 	
-
+     BGM = rm->GetSounds("Resource/Sound/BGM/イマジン・エマージェンシ.mp3");
+    PlaySoundMem(BGM, DX_PLAYTYPE_BACK);
     
    
 
+    if (!ClickSoundInitialized) {
+        ClickSound = rm->GetSounds("Resource/Sound/SE/button_click.mp3");
+        ClickSoundInitialized = true;  // 初期化済みフラグを立てる
+    }
+   
 }
 
 
@@ -43,8 +50,8 @@ eSceneType TitleScene::Update(float delta_second)
 
     InputControl* input = InputControl::GetInstance();
 
-
-    
+   
+ 
 
 
 
@@ -63,11 +70,13 @@ eSceneType TitleScene::Update(float delta_second)
         if (input->GetKeyPress(KEY_INPUT_UP) || input->GetButtonPress(XINPUT_BUTTON_DPAD_UP)) {
             cursor_position = (cursor_position - 1 + 3) % 3; // 上に移動
             last_move_time = current_time;  
+            PlaySoundMem(ClickSound, DX_PLAYTYPE_BACK);
         }
 
         if (input->GetKeyPress(KEY_INPUT_DOWN) || input->GetButtonPress(XINPUT_BUTTON_DPAD_DOWN)) {
             cursor_position = (cursor_position + 1) % 3; // 下に移動
             last_move_time = current_time;  
+            PlaySoundMem(ClickSound, DX_PLAYTYPE_BACK);
         }
 
 
@@ -76,10 +85,12 @@ eSceneType TitleScene::Update(float delta_second)
         if (left_stick.y < -0.5f) {  //上に倒したら
             cursor_position = (cursor_position + 1 ) % 3; // 上に移動
             last_move_time = current_time;
+            PlaySoundMem(ClickSound, DX_PLAYTYPE_BACK);
         }
         else if (left_stick.y > 0.5f) { // 下に倒しやた
             cursor_position = (cursor_position - 1 + 3) % 3; // 下に移動
             last_move_time = current_time;
+            PlaySoundMem(ClickSound, DX_PLAYTYPE_BACK);
         }
 
 
@@ -90,15 +101,25 @@ eSceneType TitleScene::Update(float delta_second)
     {
         if (cursor_position == 0)
         {
+            PlaySoundMem(ClickSound, DX_PLAYTYPE_BACK);
+            StopSoundMem(BGM); // BGMを停止
             return eSceneType::eInGame;
+            // BGMを停止する処理
+           
+
         }
         else if (cursor_position == 1)
         {
+            PlaySoundMem(ClickSound, DX_PLAYTYPE_BACK);
+            StopSoundMem(BGM);
             return eSceneType::eHelp;
         }
         else if (cursor_position == 2)
         {
+            PlaySoundMem(ClickSound, DX_PLAYTYPE_BACK);
+            StopSoundMem(BGM);
             return eSceneType::eEnd;
+            
         }
     }
 

@@ -11,6 +11,8 @@ private:
 	int cursor_speed;
 	int move_interval;
 	int ClickSound;
+	bool ClickSoundInitialized;
+	int BGM;
 public:
 	TitleScene();
 	virtual ~TitleScene();
