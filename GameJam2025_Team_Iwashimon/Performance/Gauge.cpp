@@ -27,10 +27,10 @@ void Gauge::Update(float delta_second)
 {
 	TimePassage(delta_second);
 
-	color.blue = Max<int>(color.red - 0.5f, 0);
+	color.blue = max(color.red - 0.5f, 0);
 	if (color.blue = 0)
 	{
-		color.green = Max<int>(color.green - 0.5f, 0);
+		color.green = max(color.green - 0.5f, 0);
 	}
 }
 
