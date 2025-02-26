@@ -1,5 +1,6 @@
 #include "Gauge.h"
 #include "DxLib.h"
+#include "../../Utility/UserTemplate.h"
 
 Gauge::Gauge():
 	down_count(0.0f),
@@ -25,6 +26,12 @@ void Gauge::Initialize()
 void Gauge::Update(float delta_second)
 {
 	TimePassage(delta_second);
+
+	color.blue = Max<int>(color.red - 0.5f, 0);
+	if (color.blue = 0)
+	{
+		color.green = Max<int>(color.green - 0.5f, 0);
+	}
 }
 
 void Gauge::Draw() const

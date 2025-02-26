@@ -60,9 +60,6 @@ void Ball::Update(float delta_second)
 
 void Ball::Draw(Vector2D target) const
 {
-	DrawFormatStringF(300, 400, GetColor(255, 255, 255), "X : %lf Y : %lf", this->GetLocation().x, this->GetLocation().y);
-	DrawFormatStringF(300, 450, GetColor(255, 255, 255), "speed.y : %lf", this->speed.y);
-
 	__super::Draw(target);
 }
 

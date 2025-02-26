@@ -27,24 +27,20 @@ void GameMain::Initialize()
 {
 	//ボール生成
 	ball = new Ball();
-	ball->Initialize();
 	objects.push_back(ball);
 	//プレイヤー生成
 	player = new Player();
-	player->Initialize();
 	objects.push_back(player);
 	//バット生成
 	bat = new BaseballBat();
-	bat->Initialize();
 	objects.push_back(bat);
+	//加速エフェクト生成
+	speed_boost = new SpeedBoost();
+	objects.push_back(speed_boost);
+
 	//blast生成
 	blast = new Blast();
 	blast->Initialize();
-	objects.push_back(blast);
-	//加速エフェクト生成
-	speed_boost = new SpeedBoost();
-	speed_boost->Initialize();
-	objects.push_back(speed_boost);
 
 	for (auto i = 0; i < objects.size(); i++)
 	{
@@ -85,6 +81,7 @@ eSceneType GameMain::Update(float delta_second)
 	if (!is_hit_bat)
 	{
 		gauge->Update(delta_second);
+		blast->Update(delta_second);
 	}
 
 	//スコアを追加
@@ -128,6 +125,10 @@ void GameMain::Draw() const
 	for (auto i = 0; i < objects.size(); i++)
 	{
 		objects[i]->Draw(objects[0]->GetLocation());
+	}
+	if (is_hit_bat)
+	{
+		blast->Draw(objects[0]->GetLocation());
 	}
 
 	gauge->Draw();

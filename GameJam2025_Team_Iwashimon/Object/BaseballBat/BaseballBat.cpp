@@ -45,7 +45,6 @@ void BaseballBat::Update(float delta_second)
 
 void BaseballBat::Draw(Vector2D target) const
 {
-	DrawFormatStringF(200, 300, GetColor(255, 255, 255), "%lf %lf", world_pos.x, world_pos.y);
 	__super::Draw(target);
 }
 
