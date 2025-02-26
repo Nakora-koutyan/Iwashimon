@@ -25,6 +25,10 @@ void HelpScene::Initialize()
 	back_sound = rm->GetSounds("Resource/Sound/BGM/イマジン・エマージェンシ.mp3");
 	button_click = rm->GetSounds("Resource/Sound/SE/button_click.mp3");
 	helpimage = tmp[0];
+	tmp = rm->GetImages("Resource/Image/help_moji1.png");
+	help_moji[0] = tmp[0];
+	tmp = rm->GetImages("Resource/Image/help_moji2.png");
+	help_moji[1] = tmp[0];
 	PlaySoundMem(back_sound, DX_PLAYTYPE_BACK);
 
 }
@@ -34,6 +38,7 @@ eSceneType HelpScene::Update(float delta_second)
 	if (input->GetButtonPress(XINPUT_BUTTON_B) || input->GetKeyPress(KEY_INPUT_B))
 	{
 		PlaySoundMem(button_click, DX_PLAYTYPE_BACK);
+		StopSoundMem(back_sound);
 
 		return eSceneType::eTitle;
 	}
@@ -41,6 +46,8 @@ eSceneType HelpScene::Update(float delta_second)
 	if (input->GetButtonPress(XINPUT_BUTTON_A) || input->GetKeyPress(KEY_INPUT_A))
 	{
 		PlaySoundMem(button_click, DX_PLAYTYPE_BACK);
+		StopSoundMem(back_sound);
+
 		return eSceneType::eInGame;
 	}
 #endif
@@ -54,6 +61,8 @@ eSceneType HelpScene::Update(float delta_second)
 void HelpScene::Draw() const
 {
 	DrawGraph(0, 0, helpimage, TRUE);
+	DrawGraph(240, 402, help_moji[0], TRUE);
+	DrawGraph(400, 400, help_moji[1], TRUE);
 }
 
 void HelpScene::Finalize()

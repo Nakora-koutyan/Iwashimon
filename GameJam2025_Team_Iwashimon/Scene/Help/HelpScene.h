@@ -8,6 +8,7 @@ private:
 	int helpimage;
 	int back_sound;
 	int button_click;
+	int help_moji[2];
 
 public:
 	HelpScene();
