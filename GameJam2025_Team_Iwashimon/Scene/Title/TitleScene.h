@@ -9,6 +9,8 @@ private:
 	int cursor_image;
 	int cursor_position;
 	int cursor_speed;
+	int move_interval;
+	int Sound_data;
 public:
 	TitleScene();
 	virtual ~TitleScene();

@@ -20,7 +20,7 @@ SceneManager::~SceneManager()
 void SceneManager::Initialize()
 {
 	//タイトル画面からスタート
-	ChangeScene(eSceneType::eInGame);
+	ChangeScene(eSceneType::eTitle);
 }
 
 void SceneManager::Update(float delta_second)
