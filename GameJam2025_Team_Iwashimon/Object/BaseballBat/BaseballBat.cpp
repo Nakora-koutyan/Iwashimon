@@ -22,6 +22,7 @@ void BaseballBat::Initialize()
 {
 	input = InputControl::GetInstance();	//インスタンス取得
 
+	world_pos = Vector2D(200.0f, 400.0f);
 	obj_size = Vector2D(40.0f);				//オブジェクトのサイズ設定
 
 	obj_type = ObjectType::eBat;
@@ -59,7 +60,7 @@ void BaseballBat::Rolling()
 
 	Vector2D length = Vector2D(10.0f, 2.0f);
 
-	float af = (VEC_ANGLE * (DX_PI_F / 180.0f));	//回転の軸の角度
+	float af = (VEC_ANGLE * (DX_PI_F / 180.0f));												//回転の軸の角度
 	Vector2D m = { (float)(cos(af) * length.x),(float)(sin(af) * length.y) };
 
 	velocity.x = world_pos.x + (cos(frequency) * m.x);											//振り子の動きのx座標

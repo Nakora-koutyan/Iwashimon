@@ -4,7 +4,8 @@
 class Player:public ObjectBase
 {
 private:
-	
+	int player_image[2];
+	class InputControl* input;
 
 public:
 	Player();
