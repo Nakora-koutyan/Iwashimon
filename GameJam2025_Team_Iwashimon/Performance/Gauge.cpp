@@ -15,13 +15,12 @@ Gauge::~Gauge()
 void Gauge::Initialize()
 {
 	current_gauge = MAX_GAUGE;				// 現在のゲージ量
-	down_count = (MAX_GAUGE / 15);			//減少速度
+	down_count = (MAX_GAUGE / 10);			//減少速度
 }
 
 void Gauge::Update(float delta_second)
 {
-	Gauge::TimePassage(delta_second);
-	Gauge::Draw();
+	TimePassage(delta_second);
 }
 
 void Gauge::Draw() const

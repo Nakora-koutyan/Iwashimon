@@ -45,9 +45,8 @@ void Ball::Update(float delta_second)
 	}
 	if (is_air == true)
 	{
-		g_velocity += D_GRAVITY / 440.0f;			//重力加算
-		speed.y += g_velocity * delta_second;		//重力をY方向の加速度に加算する
-		speed.x = 60.0f;							//X方向の速度を設定
+		g_velocity += D_GRAVITY / 110.0f;			//重力加算
+		speed.y += g_velocity * delta_second*10;	//重力をY方向の加速度に加算する
 		world_pos += speed * delta_second;			//座標に加速を加算し移動させる
 	}
 	
@@ -86,6 +85,7 @@ void Ball::OnCollisionEnter(ObjectBase* obj)
 
 void Ball::SetTargetHeight(float length)
 {
-	target_length = target_height * length * 0.5f;
+	target_length = target_height * length;
+	speed.x = target_length;
 	speed.y = -target_length;
 }

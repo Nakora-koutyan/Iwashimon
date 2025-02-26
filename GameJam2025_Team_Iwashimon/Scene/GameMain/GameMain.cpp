@@ -70,7 +70,7 @@ eSceneType GameMain::Update(float delta_second)
 	if (bat->CollisionHit(ball))
 	{
 		ball->OnCollisionEnter(bat);
-		ball->SetTargetHeight(gauge->GetConsumedLength());
+		ball->SetTargetHeight(gauge->GetConsumedLength() * delta_second);
 	}
 
 	gauge->Update(delta_second);
