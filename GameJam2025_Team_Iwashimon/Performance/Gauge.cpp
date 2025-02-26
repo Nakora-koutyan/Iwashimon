@@ -1,6 +1,6 @@
 #include "Gauge.h"
 #include "DxLib.h"
-#include "../../Utility/UserTemplate.h"
+#include "../Utility/UserTemplate.h"
 
 Gauge::Gauge():
 	down_count(0.0f),
