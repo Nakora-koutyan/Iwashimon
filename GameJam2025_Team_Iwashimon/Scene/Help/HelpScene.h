@@ -6,6 +6,8 @@ class HelpScene :public SceneBase
 private:
 	class InputControl* input;
 	int helpimage;
+	int back_sound;
+	int button_click;
 
 public:
 	HelpScene();
