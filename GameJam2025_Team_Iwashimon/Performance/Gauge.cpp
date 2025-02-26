@@ -36,7 +36,6 @@ void Gauge::Update(float delta_second)
 	if (color.blue = 0)
 	{
 		color.green = max(color.green - 0.5f, 0);
-		StopSoundMem(Gauge_SE);
 	}
 }
 
@@ -56,7 +55,6 @@ void Gauge::Finalize()
 void Gauge::TimePassage(float delta_second)
 {
 	current_gauge -= (down_count) * delta_second;
-	PlaySoundMem(Gauge_SE, DX_PLAYTYPE_BACK, TRUE);
 	if (current_gauge < 0) 
 	{
 		current_gauge = 0;
