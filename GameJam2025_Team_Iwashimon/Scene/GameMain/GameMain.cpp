@@ -89,8 +89,8 @@ eSceneType GameMain::Update(float delta_second)
 	//スコアを追加
 	if (is_hit_bat && !ball->GetIsAir())
 	{
-		return eSceneType::eResult;
 		score = ball->GetLocation().x;
+		return eSceneType::eResult;
 	}
 	else
 	{
@@ -100,7 +100,29 @@ eSceneType GameMain::Update(float delta_second)
 
 void GameMain::Draw() const
 {
-	DrawGraphF(0.0f, 0.0f, main_backgound_image, TRUE);
+	//追尾対象を決定
+	Vector2D camera_pos = ball->GetLocation();
+
+	//カメラがステージの一番上からはみ出さなようにする
+	if ((camera_pos.y - (SCREEN_HEIGHT * 0.5f)) <= 0)
+	{
+		camera_pos.y = (SCREEN_HEIGHT * 0.5f);
+	}
+	//カメラがステージの底より下にならないようにする
+	if (STAGE_HEIGHT <= (camera_pos.y + (SCREEN_HEIGHT * 0.5f)))
+	{
+		camera_pos.y = STAGE_HEIGHT - (SCREEN_HEIGHT * 0.5f);
+	}
+
+	//カメラ座標からスクリーン座標の原点に変換する
+	Vector2D screen_origin_pos;
+	screen_origin_pos.x = camera_pos.x - (SCREEN_WIDTH * 0.5f);
+	screen_origin_pos.y = camera_pos.y - (SCREEN_HEIGHT * 0.5f);
+
+	for (int i = 0; i < 10; i++)
+	{
+		DrawGraphF(((0 + i * 1280) - screen_origin_pos.x), (0 - screen_origin_pos.y), main_backgound_image, TRUE);
+	}
 
 	for (auto i = 0; i < objects.size(); i++)
 	{

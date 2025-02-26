@@ -3,7 +3,6 @@
 
 SceneBase::SceneBase() 
 	:background_image(NULL)
-	,score(0.0f)
 {
 }
 

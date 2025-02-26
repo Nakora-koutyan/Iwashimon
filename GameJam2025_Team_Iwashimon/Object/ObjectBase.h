@@ -6,7 +6,7 @@
 #define SCREEN_WIDTH (640)
 
 #define STAGE_WIDTH (2400.0f)
-#define STAGE_HEIGHT (900.0f)
+#define STAGE_HEIGHT (480.0f)
 
 enum class ObjectType
 {

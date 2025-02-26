@@ -32,6 +32,7 @@ private:
 
 	//”wŒi‚Ì‰æ‘œ‚ÉŠÖ‚·‚é•Ï”
 	int main_backgound_image;
+	Vector2D back_image_pos;
 
 public:
 	GameMain();
