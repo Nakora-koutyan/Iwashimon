@@ -1,6 +1,7 @@
 #include "Gauge.h"
 #include "DxLib.h"
 #include "../Utility/UserTemplate.h"
+#include "../Utility/ResourceManager.h"
 
 Gauge::Gauge():
 	down_count(0.0f),
@@ -21,16 +22,21 @@ void Gauge::Initialize()
 	color.red = 255;
 	color.blue = 255;
 	color.green = 255;
+
+	ResourceManager* rs = ResourceManager::GetInstance();
+	int SE;
+	SE = rs->GetSounds("Resource/Sound/SE/doukasen.mp3");
+	Gauge_SE = SE;
 }
 
 void Gauge::Update(float delta_second)
 {
 	TimePassage(delta_second);
-
 	color.blue = max(color.red - 0.5f, 0);
 	if (color.blue = 0)
 	{
 		color.green = max(color.green - 0.5f, 0);
+		StopSoundMem(Gauge_SE);
 	}
 }
 
@@ -50,7 +56,7 @@ void Gauge::Finalize()
 void Gauge::TimePassage(float delta_second)
 {
 	current_gauge -= (down_count) * delta_second;
-
+	PlaySoundMem(Gauge_SE, DX_PLAYTYPE_BACK, TRUE);
 	if (current_gauge < 0) 
 	{
 		current_gauge = 0;

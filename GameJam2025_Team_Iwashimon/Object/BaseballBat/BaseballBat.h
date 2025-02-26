@@ -13,6 +13,9 @@ private:
 
 	bool is_swinging;		//バットを振った？
 
+	int Hit_SE;
+	int Bakuhatu_SE;
+
 public:
 	BaseballBat();
 	~BaseballBat();

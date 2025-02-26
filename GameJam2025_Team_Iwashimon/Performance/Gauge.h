@@ -17,6 +17,8 @@ private:
 	float current_gauge; // Œ»İ‚ÌƒQ[ƒW—Ê
 	float down_count;
 
+	int Gauge_SE;
+
 	ColorParam color{};
 
 public:

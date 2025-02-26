@@ -1,6 +1,7 @@
 #include "BaseballBat.h"
 #include "../../Utility/InputManager.h"
 #include <math.h>
+#include "../../Utility/ResourceManager.h"
 
 #define ANGLE_VELOCITY (10.0f)
 #define VEC_ANGLE (180.0f)
@@ -12,6 +13,7 @@ BaseballBat::BaseballBat()
 	, is_swinging(false)
 	, input(nullptr)
 {
+
 }
 
 BaseballBat::~BaseballBat()
@@ -26,12 +28,20 @@ void BaseballBat::Initialize()
 	obj_size = Vector2D(40.0f);				//オブジェクトのサイズ設定
 
 	obj_type = ObjectType::eBat;
+	ResourceManager* rs = ResourceManager::GetInstance();
+	int SE;
+	SE = rs->GetSounds("Resource/Sound/SE/hit_SE.mp3");
+	Hit_SE = SE;
+	SE = rs->GetSounds("Resource/Sound/SE/bakuha.mp3");
+	Bakuhatu_SE = SE;
 }
 
 void BaseballBat::Update(float delta_second)
 {
 	if (input->GetKeyPress(KEY_INPUT_SPACE))
 	{
+		PlaySoundMem(Hit_SE, DX_PLAYTYPE_BACK, TRUE);
+		PlaySoundMem(Bakuhatu_SE, DX_PLAYTYPE_BACK, TRUE);
 		is_swinging = true;
 	}
 
