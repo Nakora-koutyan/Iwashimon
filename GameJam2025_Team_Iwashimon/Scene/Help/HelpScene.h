@@ -3,6 +3,10 @@
 
 class HelpScene :public SceneBase
 {
+private:
+	class InputControl* input;
+	int helpimage;
+
 public:
 	HelpScene();
 	~HelpScene();
