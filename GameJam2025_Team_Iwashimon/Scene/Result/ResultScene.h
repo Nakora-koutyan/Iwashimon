@@ -7,6 +7,8 @@ private:
 	class InputControl* input;
 	int resultimage;
 	int result_SE;
+	int result_button_flag;
+
 public:
 	ResultScene();
 	~ResultScene();

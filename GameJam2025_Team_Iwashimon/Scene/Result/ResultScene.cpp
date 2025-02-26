@@ -6,6 +6,7 @@
 ResultScene::ResultScene()
 {
 	input = nullptr;
+	result_button_flag = 0;
 }
 
 ResultScene::~ResultScene()
@@ -26,9 +27,14 @@ void ResultScene::Initialize()
 
 eSceneType ResultScene::Update(float delta_second)
 {
-	if (input->GetKeyPress(XINPUT_BUTTON_A) || input->GetKeyPress(KEY_INPUT_A))
+	if (result_button_flag == 0)
+	{
+		result_button_flag = 1;
+	}
+	if (input->GetButtonPress(XINPUT_BUTTON_A) || input->GetKeyPress(KEY_INPUT_A))
 	{
 		PlaySoundMem(result_SE, DX_PLAYTYPE_BACK, TRUE);
+		result_button_flag = 0;
 		return eSceneType::eTitle;
 	}
 #if 1
@@ -45,9 +51,12 @@ eSceneType ResultScene::Update(float delta_second)
 
 void ResultScene::Draw() const
 {
-	DrawGraph(0, 0, resultimage, TRUE);
-	SetFontSize(120);
-	DrawFormatString(40, 205, 0x000000, "%lf", score);
+	if (result_button_flag == 1)
+	{
+		DrawGraph(0, 0, resultimage, TRUE);
+		SetFontSize(120);
+		DrawFormatString(40, 205, 0x000000, "%lf", score);
+	}
 }
 
 void ResultScene::Finalize()
