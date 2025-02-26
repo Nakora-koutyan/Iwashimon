@@ -6,6 +6,7 @@ class Blast:public ObjectBase
 private:
 	bool bom_flg;
 	float alpha_time;
+	int blast_image[2];
 
 public:
 	Blast();

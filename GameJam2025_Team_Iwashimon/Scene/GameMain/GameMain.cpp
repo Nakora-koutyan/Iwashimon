@@ -53,6 +53,7 @@ void GameMain::Initialize()
 	}
 
 	bat->SetLocation(Vector2D(player->GetLocation().x,player->GetLocation().y + 25.0f));
+	blast->SetLocation(Vector2D(ball->GetLocation().x - 40, ball->GetLocation().y ));
 
 	//ƒQ[ƒW‚ğ•\¦
 	gauge = new Gauge();
