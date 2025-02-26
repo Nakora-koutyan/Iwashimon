@@ -135,19 +135,19 @@ void TitleScene::Draw() const
 	DrawRotaGraph(320, 240, 1, 0.0, title_image, FALSE);
 
     float cursor_scale = 1.0f;
-    int cursor_y = 280;  // 初期位置: インゲーム
+    int cursor_y = 270;  // 初期位置: インゲーム
 
     // カーソル位置に応じたY座標の決定
     switch (cursor_position)
     {
     case 0: // インゲーム
-        cursor_y = 280;
+        cursor_y = 270;
         break;
     case 1: // ヘルプ
-        cursor_y = 350;
+        cursor_y = 340;
         break;
     case 2: // エンド
-        cursor_y = 430;
+        cursor_y = 410;
         break;
     }
 
