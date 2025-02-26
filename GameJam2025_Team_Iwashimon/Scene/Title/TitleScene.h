@@ -4,7 +4,11 @@
 class TitleScene :public SceneBase
 {
 private:
-
+	int title_image;
+	int selectedIndex;
+	int cursor_image;
+	int cursor_position;
+	int cursor_speed;
 public:
 	TitleScene();
 	virtual ~TitleScene();
