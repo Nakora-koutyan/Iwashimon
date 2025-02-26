@@ -6,9 +6,11 @@ class EndScene :public SceneBase
 private:
 	class InputControl* input;
 	int Endimage;
-	int Endrollimage[6];
+	int Endrollimage[7];
 	int g_WaitTime;
 	int g_PosY;
+	int end_BGM;
+
 public:
 	EndScene();
 	~EndScene();

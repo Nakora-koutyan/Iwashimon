@@ -31,15 +31,26 @@ void EndScene::Initialize()
 	Endrollimage[4] = tmp[0];
 	tmp = rm->GetImages("Resource/Image/end_moji5.png");
 	Endrollimage[5] = tmp[0];
+	tmp = rm->GetImages("Resource/Image/end_moji6.png");
+	Endrollimage[6] = tmp[0];
+
+	ResourceManager* rs = ResourceManager::GetInstance();
+	int BGM;
+	BGM = rs->GetSounds("Resource/Sound/BGM/end_BGM.mp3");
+	end_BGM = BGM;
 }
 
 eSceneType EndScene::Update(float delta_second)
 {
-	if (++g_WaitTime < 7400)g_PosY = 600 - g_WaitTime / 4;
-	
-	if (++g_WaitTime > 7500)
+	if (CheckSoundMem(end_BGM) == 0)
 	{
-		if (g_PosY >= 600 || g_WaitTime >= 8000)
+		PlaySoundMem(end_BGM, DX_PLAYTYPE_BACK, TRUE);
+	}
+	if (++g_WaitTime < 8300)g_PosY = 600 - g_WaitTime / 4;
+	
+	if (++g_WaitTime > 8400)
+	{
+		if (g_PosY >= 600 || g_WaitTime >= 8900)
 		{
 			return eSceneType::eGameEnd;
 		}
@@ -50,12 +61,13 @@ eSceneType EndScene::Update(float delta_second)
 void EndScene::Draw() const
 {
 	DrawGraph(0, 0, Endimage, TRUE);
-	DrawGraph(0, 1300 + g_PosY, Endrollimage[0], TRUE);
+	DrawGraph(0, 1500 + g_PosY, Endrollimage[0], TRUE);
 	DrawGraph(50, 300 + g_PosY, Endrollimage[1], TRUE);
 	DrawGraph(50, 500 + g_PosY, Endrollimage[2], TRUE);
 	DrawGraph(50, 700 + g_PosY, Endrollimage[3], TRUE);
 	DrawGraph(50, 900 + g_PosY, Endrollimage[4], TRUE);
-	DrawGraph(50, 1100 + g_PosY, Endrollimage[5], TRUE);
+	DrawGraph(50, 1300 + g_PosY, Endrollimage[5], TRUE);
+	DrawGraph(0, 1100 + g_PosY, Endrollimage[6], TRUE);
 }
 
 void EndScene::Finalize()
