@@ -121,7 +121,7 @@ void GameMain::Draw() const
 
 	for (int i = 0; i < 10; i++)
 	{
-		DrawGraphF(((0 + i * 1280) - screen_origin_pos.x), (0 - screen_origin_pos.y), main_backgound_image, TRUE);
+		DrawGraphF(((-50.0f + i * 1280) - screen_origin_pos.x), (0 - screen_origin_pos.y), main_backgound_image, TRUE);
 	}
 
 	for (auto i = 0; i < objects.size(); i++)

@@ -42,7 +42,7 @@ void InputControl::Update()
 void InputControl::KeyInputUpdate()
 {
 	//前回の入力値を更新
-	memcpy(now_key, old_key, (sizeof(char) * D_KEY_CODE_MAX));
+	memcpy(old_key, now_key, (sizeof(char) * D_KEY_CODE_MAX));
 
 	//全キーの押下状態を取得する
 	GetHitKeyStateAll(now_key);
@@ -77,6 +77,8 @@ bool InputControl::CheckKeyCodeRange(int key_code) const
 
 void InputControl::PadInputUpdate()
 {
+	//前回の入力状態を更新
+	memcpy(old_button, now_button, (sizeof(char) * D_KEY_CODE_MAX));
 	XINPUT_STATE xinput{};
 
 	//入力状態を取得
