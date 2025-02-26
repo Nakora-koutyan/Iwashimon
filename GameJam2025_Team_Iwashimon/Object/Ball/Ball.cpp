@@ -39,7 +39,7 @@ void Ball::Initialize()
 
 void Ball::Update(float delta_second)
 {
-	if (world_pos.y >= 800.0f && 0 <= speed.y)
+	if (world_pos.y >= 400.0f && 0 <= speed.y)
 	{
 		is_air = false;
 	}
@@ -54,7 +54,7 @@ void Ball::Update(float delta_second)
 	{
 		g_velocity = 0.0f;
 		speed.y = 0.0f;
-		world_pos.y = 800.0f;
+		world_pos.y = 400.0f;
 	}
 }
 

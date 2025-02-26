@@ -16,7 +16,7 @@ class SceneBase
 {
 protected:
 	int background_image;
-	float score=0.0f;
+	float score{};
 
 public:
 	SceneBase();

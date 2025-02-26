@@ -49,9 +49,6 @@ void ObjectBase::Draw(Vector2D target_pos) const
 	screen_pos.x = world_pos.x - screen_origin_pos.x;
 	screen_pos.y = world_pos.y - screen_origin_pos.y;
 
-	DrawBoxAA(screen_pos.x - (obj_size.x * 0.5f), screen_pos.y - (obj_size.y * 0.5f),
-		screen_pos.x + (obj_size.x * 0.5f), screen_pos.y + (obj_size.y * 0.5f),
-		GetColor(255, 0, 0), TRUE);
 	DrawRotaGraphF(screen_pos.x, screen_pos.y, 1.0f, 0, image, reverse_image);
 }
 

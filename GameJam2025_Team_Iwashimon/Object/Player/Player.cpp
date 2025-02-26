@@ -10,7 +10,7 @@ Player::~Player()
 
 void Player::Initialize()
 {
-	world_pos = Vector2D(200.0f, 800.0f);
+	world_pos = Vector2D(200.0f, 400.0f);
 	obj_size = Vector2D(50.0f, 120.0f);
 }
 
