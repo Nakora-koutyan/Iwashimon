@@ -1,6 +1,6 @@
 #include "Blast.h"
 #include "DxLib.h"
-#include "../../Utility/ResourceManager.h"
+#include "../Utility/ResourceManager.h"
 
 Blast::Blast()
     :bom_flg(false)
