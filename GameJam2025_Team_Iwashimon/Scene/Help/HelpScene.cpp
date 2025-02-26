@@ -31,14 +31,14 @@ void HelpScene::Initialize()
 
 eSceneType HelpScene::Update(float delta_second)
 {
-	if (input->GetKeyPress(XINPUT_BUTTON_B) || input->GetKeyPress(KEY_INPUT_B))
+	if (input->GetButtonPress(XINPUT_BUTTON_B) || input->GetKeyPress(KEY_INPUT_B))
 	{
 		PlaySoundMem(button_click, DX_PLAYTYPE_BACK);
 
 		return eSceneType::eTitle;
 	}
 #if 1
-	if (input->GetKeyPress(KEY_INPUT_A) || input->GetKeyPress(KEY_INPUT_A))
+	if (input->GetButtonPress(XINPUT_BUTTON_A) || input->GetKeyPress(KEY_INPUT_A))
 	{
 		PlaySoundMem(button_click, DX_PLAYTYPE_BACK);
 		return eSceneType::eInGame;
