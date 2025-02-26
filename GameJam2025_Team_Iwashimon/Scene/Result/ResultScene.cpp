@@ -6,7 +6,6 @@
 ResultScene::ResultScene()
 {
 	input = nullptr;
-	score = 0.0f;
 }
 
 ResultScene::~ResultScene()
@@ -47,7 +46,8 @@ eSceneType ResultScene::Update(float delta_second)
 void ResultScene::Draw() const
 {
 	DrawGraph(0, 0, resultimage, TRUE);
-	DrawFormatString(10, 10, 0x000000, "%lf", score);
+	SetFontSize(120);
+	DrawFormatString(40, 205, 0x000000, "%lf", score);
 }
 
 void ResultScene::Finalize()

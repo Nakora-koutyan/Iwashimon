@@ -7,7 +7,6 @@ private:
 	class InputControl* input;
 	int resultimage;
 	int result_SE;
-	float score;
 public:
 	ResultScene();
 	~ResultScene();
