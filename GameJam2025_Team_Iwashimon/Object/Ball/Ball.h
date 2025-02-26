@@ -42,4 +42,6 @@ public:
 
 	//‚‚³–Ú•W‚Ì’·‚³‚ğİ’è‚·‚é
 	void SetTargetHeight(float length);
+
+	bool GetIsAir()const { return is_air; }
 };

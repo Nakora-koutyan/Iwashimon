@@ -4,11 +4,20 @@
 #define MAX_GAUGE  (500.0f)	// ゲージの最大値
 #define DECREASE_SPEED  (1)	// 減少速度 (1秒あたり)
 
+struct ColorParam
+{
+	int red;
+	int blue;
+	int green;
+};
+
 class Gauge
 {
 private:
 	float current_gauge; // 現在のゲージ量
 	float down_count;
+
+	ColorParam color{};
 
 public:
 	Gauge();

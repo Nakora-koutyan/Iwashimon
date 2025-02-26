@@ -1,7 +1,6 @@
 #include "Gauge.h"
 #include "DxLib.h"
 
-
 Gauge::Gauge():
 	down_count(0.0f),
 	current_gauge(0)
@@ -16,6 +15,11 @@ void Gauge::Initialize()
 {
 	current_gauge = MAX_GAUGE;				// 現在のゲージ量
 	down_count = (MAX_GAUGE / 10);			//減少速度
+
+	//ゲージバーの色の値を設定
+	color.red = 255;
+	color.blue = 255;
+	color.green = 255;
 }
 
 void Gauge::Update(float delta_second)
@@ -26,7 +30,7 @@ void Gauge::Update(float delta_second)
 void Gauge::Draw() const
 {
 	// ゲージの描画
-	DrawBoxAA(10.0f, 10.0f, 10.0f + current_gauge, 40.0f, GetColor(255, 0, 0), TRUE);
+	DrawBoxAA(10.0f, 10.0f, 10.0f + current_gauge, 40.0f, GetColor(color.red, color.blue, color.green), TRUE);
 	// ゲージの枠線を描画
 	DrawBoxAA(10.0f, 10.0f, 10.0f + MAX_GAUGE, 40, GetColor(255, 255, 255), FALSE);
 }

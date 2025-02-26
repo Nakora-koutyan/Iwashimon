@@ -1,7 +1,9 @@
 #include "SceneBase.h"
 #include "DxLib.h"
 
-SceneBase::SceneBase() :background_image(NULL)
+SceneBase::SceneBase() 
+	:background_image(NULL)
+	,score(0.0f)
 {
 }
 

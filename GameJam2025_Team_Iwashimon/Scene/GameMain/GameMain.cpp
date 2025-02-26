@@ -1,5 +1,6 @@
 #include "GameMain.h"
 #include "../../Utility/InputManager.h"
+#include "../../Utility/ResourceManager.h"
 
 #include <iostream>
 #include <fstream>
@@ -14,6 +15,7 @@ GameMain::GameMain()
 	,bat(nullptr)
 	,blast(nullptr)
 	,speed_boost(nullptr)
+	, main_backgound_image(NULL)
 {
 }
 
@@ -57,6 +59,11 @@ void GameMain::Initialize()
 	gauge->Initialize();
 
 	input = InputControl::GetInstance();
+
+	ResourceManager* rm = ResourceManager::GetInstance();
+	std::vector<int> tmp;
+	tmp = rm->GetImages("Resource/Image/background_gamemain.png");
+	main_backgound_image = tmp[0];
 }
 
 eSceneType GameMain::Update(float delta_second)
@@ -71,22 +78,19 @@ eSceneType GameMain::Update(float delta_second)
 	{
 		ball->OnCollisionEnter(bat);
 		ball->SetTargetHeight(gauge->GetConsumedLength() * delta_second);
+		is_hit_bat = true;
+	}
+	
+	if (!is_hit_bat)
+	{
+		gauge->Update(delta_second);
 	}
 
-	gauge->Update(delta_second);
-
-	//ボタンで各シーンに遷移できるようにしました
-	if (input->GetKeyPress(KEY_INPUT_R))
+	//スコアを追加
+	if (is_hit_bat && !ball->GetIsAir())
 	{
 		return eSceneType::eResult;
-	}
-	else if (input->GetKeyPress(KEY_INPUT_T))
-	{
-		return eSceneType::eTitle;
-	}
-	else if (input->GetKeyPress(KEY_INPUT_H))
-	{
-		return eSceneType::eHelp;
+		score = ball->GetLocation().x;
 	}
 	else
 	{
@@ -96,6 +100,8 @@ eSceneType GameMain::Update(float delta_second)
 
 void GameMain::Draw() const
 {
+	DrawGraphF(0.0f, 0.0f, main_backgound_image, TRUE);
+
 	for (auto i = 0; i < objects.size(); i++)
 	{
 		objects[i]->Draw(objects[0]->GetLocation());

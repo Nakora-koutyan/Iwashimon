@@ -6,7 +6,7 @@ ObjectBase::ObjectBase()
 	:world_pos(0.0f)
 	,obj_size(0.0f)
 	,image(NULL)
-	,reverse_image(NULL)
+	,reverse_image(TRUE)
 	, obj_type(ObjectType::eOther)
 {
 }
