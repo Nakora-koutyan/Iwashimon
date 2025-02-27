@@ -1,11 +1,13 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "GameMain.h"
 #include "../../Utility/InputManager.h"
 #include "../../Utility/ResourceManager.h"
 
+#include <stdio.h>
 #include <iostream>
 #include <fstream>
 #include <string>
-
 
 GameMain::GameMain()
 	:gauge(nullptr)
@@ -85,9 +87,10 @@ eSceneType GameMain::Update(float delta_second)
 	}
 
 	//スコアを追加
-	if (is_hit_bat && !ball->GetIsAir())
+	if ((is_hit_bat && !ball->GetIsAir()) || gauge->GetCurrentGauge() <= 0.0f)
 	{
-		score = ball->GetLocation().x;
+		score = ball->GetLocation().x - ball->GetInitBallPosX().x;
+		SaveStageData();
 		return eSceneType::eResult;
 	}
 	else
@@ -141,4 +144,18 @@ void GameMain::Finalize()
 eSceneType GameMain::GetNowSceneType() const
 {
 	return eSceneType::eInGame;
+}
+
+void GameMain::SaveStageData() const
+{
+	FILE* fp = nullptr;
+
+	//書き込みモードでファイルを開く
+	fp = fopen("Resource/Data/ScoreData.txt", "w");
+
+	//ファイルにscoreを書き込む
+	fprintf(fp, "%lf\n", score);
+
+	//ファイルを閉じる
+	fclose(fp);
 }

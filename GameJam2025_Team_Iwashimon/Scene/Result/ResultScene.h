@@ -21,5 +21,8 @@ public:
 
 public:
 	eSceneType GetNowSceneType()const override;
+
+public:
+	void GetScoreData();
 };
 

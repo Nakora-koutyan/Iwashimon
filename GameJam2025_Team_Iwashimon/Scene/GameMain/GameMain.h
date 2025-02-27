@@ -46,5 +46,8 @@ public:
 
 public:
 	eSceneType GetNowSceneType()const override;
-};
 
+private:
+	//ƒf[ƒ^‚ğ•Û‘¶‚·‚é
+	void SaveStageData() const;
+};

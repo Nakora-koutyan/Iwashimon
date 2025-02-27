@@ -35,6 +35,8 @@ void Ball::Initialize()
 	std::vector<int> tmp;
 	tmp = rm->GetImages("Resource/Image/ball.png");
 	image = tmp[0];
+
+	init_pos_ = world_pos;
 }
 
 void Ball::Update(float delta_second)

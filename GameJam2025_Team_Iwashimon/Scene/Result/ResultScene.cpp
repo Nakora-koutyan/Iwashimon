@@ -1,6 +1,9 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "ResultScene.h"
 #include "../../Utility/InputManager.h"
 #include "DxLib.h"
+#include <stdio.h>
 #include "../../Utility/ResourceManager.h"
 
 ResultScene::ResultScene()
@@ -23,6 +26,8 @@ void ResultScene::Initialize()
 	int SE;
 	SE = rm->GetSounds("Resource/Sound/SE/button_click.mp3");
 	result_SE = SE;
+
+	GetScoreData();
 }
 
 eSceneType ResultScene::Update(float delta_second)
@@ -37,7 +42,7 @@ eSceneType ResultScene::Update(float delta_second)
 		result_button_flag = 0;
 		return eSceneType::eTitle;
 	}
-#if 1
+#if _DEBUG
 	if(input->GetKeyPress(KEY_INPUT_E))
 	{
 		return eSceneType::eEnd;
@@ -66,4 +71,16 @@ void ResultScene::Finalize()
 eSceneType ResultScene::GetNowSceneType() const
 {
 	return eSceneType::eResult;
+}
+
+void ResultScene::GetScoreData()
+{
+#pragma warning(disable : 4996)
+	FILE* fp = nullptr;
+
+	fp = fopen("Resource/Data/ScoreData.txt", "r");
+
+	fscanf(fp, "%f\n", &score);
+
+	fclose(fp);
 }

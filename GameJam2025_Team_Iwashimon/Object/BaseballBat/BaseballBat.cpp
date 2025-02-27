@@ -38,7 +38,7 @@ void BaseballBat::Initialize()
 
 void BaseballBat::Update(float delta_second)
 {
-	if (input->GetKeyPress(KEY_INPUT_SPACE))
+	if (input->GetKeyPress(KEY_INPUT_SPACE)||input->GetButtonPress(XINPUT_BUTTON_A))
 	{
 		PlaySoundMem(Hit_SE, DX_PLAYTYPE_BACK, TRUE);
 		PlaySoundMem(Bakuhatu_SE, DX_PLAYTYPE_BACK, TRUE);

@@ -30,7 +30,7 @@ void Player::Initialize()
 
 void Player::Update(float delta_second)
 {
-	if (input->GetKeyPress(KEY_INPUT_SPACE))
+	if (input->GetButtonPress(XINPUT_BUTTON_A))
 	{
 		image = player_image[1];
 	}

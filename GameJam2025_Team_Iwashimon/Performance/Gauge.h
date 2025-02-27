@@ -40,5 +40,7 @@ public:
 
 	//Œ»İ‚ÌƒQ[ƒW‚Ì’l‚ğæ“¾
 	float GetConsumedLength()const { return MAX_GAUGE - current_gauge; }
+
+	float GetCurrentGauge()const { return current_gauge; }
 };
 

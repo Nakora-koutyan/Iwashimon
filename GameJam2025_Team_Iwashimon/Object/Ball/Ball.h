@@ -23,6 +23,8 @@ private:
 	float target_length;
 	float target_height;
 
+	Vector2D init_pos_;
+
 public:
 	Ball();
 	~Ball();
@@ -44,4 +46,6 @@ public:
 	void SetTargetHeight(float length);
 
 	bool GetIsAir()const { return is_air; }
+
+	Vector2D GetInitBallPosX()const { return init_pos_; }
 };
