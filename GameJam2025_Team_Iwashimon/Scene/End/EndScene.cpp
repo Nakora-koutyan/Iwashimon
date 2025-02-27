@@ -6,9 +6,9 @@
 EndScene::EndScene()
 {
 	g_WaitTime = 0;
-	time[0] = 9200;
-	time[1] = 9300;
-	time[2] = 9800;
+	time[0] = 4500;
+	time[1] = 4800;
+	time[2] = 5000;
 }
 
 EndScene::~EndScene()
@@ -51,7 +51,7 @@ eSceneType EndScene::Update(float delta_second)
 	{
 		PlaySoundMem(end_BGM, DX_PLAYTYPE_BACK, TRUE);
 	}
-	if (++g_WaitTime < time[0])g_PosY = 600 - g_WaitTime / 4;
+	if (++g_WaitTime < time[0])g_PosY = 600 - g_WaitTime / 2;
 	
 	if (++g_WaitTime > time[1])
 	{
